@@ -4,16 +4,30 @@ using System.Collections.Generic;
 
 public class AudioPlayer : MonoBehaviour
 {
-    public AudioSource audioPlayer;
+    public static AudioPlayer inst;
+    public AudioSource audioSource;
     public AudioClip startMusic;
     public AudioClip normalMusic;
-  
+    public AudioClip pacMove;
+
     IEnumerator Start()
     {
-        audioPlayer.Play();
+        inst = this;
+
+        StartCoroutine(PlayMove());
+        audioSource.Play();
         yield return new WaitForSeconds(3);
-        audioPlayer.clip = normalMusic;
-        audioPlayer.loop = true;
-        audioPlayer.Play();
+        audioSource.clip = normalMusic;
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+
+    public IEnumerator PlayMove() 
+    {
+        for(;;) 
+        {
+            audioSource.PlayOneShot(pacMove);
+            yield return new WaitForSeconds(pacMove.length + 0.2f);
+        }
     }
 }
