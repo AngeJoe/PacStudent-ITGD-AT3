@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reaper Health
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: a02780ad5f3e28f4cb94c1ae5483d4a8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: a02780ad5f3e28f4cb94c1ae5483d4a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.17
