@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VectorGraphics;
 
 public class AudioPlayer : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class AudioPlayer : MonoBehaviour
     IEnumerator Start()
     {
         inst = this;
-
         StartCoroutine(PlayMove());
         audioSource.Play();
         yield return new WaitForSeconds(3);
