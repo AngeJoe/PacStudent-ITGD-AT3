@@ -1,18 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class MenuUIManager : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void LoadFirstLevel()
     {
         SceneManager.LoadSceneAsync(1);
