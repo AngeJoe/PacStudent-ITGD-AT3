@@ -31,6 +31,9 @@ public class LevelGenerator : MonoBehaviour
             {0,0,0,0,0,0,5,0,0,0,4,0,0,0},
         };
     
+    int xLength;
+    int yLength;
+
     // LEGEND:
     // 0 - Empty (Can either be a background sprite or no sprite).
     // 1 - Outside corner (double lined corner piece in original game).
@@ -44,6 +47,9 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
+        xLength = levelMap.GetLength(1);
+        yLength = levelMap.GetLength(0);
+        
         Destroy(level01);
         createLevel();
         MirrorHori();
@@ -55,6 +61,53 @@ public class LevelGenerator : MonoBehaviour
 
     }
 
+    public int[] realToMap(Vector3 vec)
+    {
+        int x = (int)Mathf.Round(vec.x);
+        int y = (int)Mathf.Round(vec.y);
+
+        x += xLength - 1;
+        y = yLength - y - 1;
+
+        return new int[] {x, y};
+    }
+
+    public int getTile(int x, int y)
+    {
+        Debug.Log(x + ", " + y + " before");
+        int[] mapPos = realToMap(new Vector3(x, y));
+        x = mapPos[0];
+        y = mapPos[1];
+        Debug.Log(x + ", " + y + " after");
+
+        if (x >= xLength) x = 2 * xLength - x - 1;
+        if (y >= yLength) y = 2 * yLength - y - 2;
+        return levelMap[y, x];
+    }
+
+    public int getTile(float x, float y)
+    {
+        return getTile((int)Mathf.Round(x), (int)Mathf.Round(y));
+    }
+
+    public bool isEmpty(Vector3 endPos)
+    {
+        int tile = getTile(endPos.x, endPos.y);
+        return tile == 0 || tile == 5 || tile == 6;
+    }
+
+    public bool isNormalPellet(Vector3 endPos)
+    {
+        int tile = getTile(endPos.x, endPos.y);
+        return tile == 5;
+    }
+
+    public bool isPowerPellet(Vector3 endPos)
+    {
+        int tile = getTile(endPos.x, endPos.y);
+        return tile == 6;
+    }
+
     public void createLevel() 
     {
         int leftCell = -1;
@@ -62,14 +115,13 @@ public class LevelGenerator : MonoBehaviour
         int topCell = -1;
         int bottomCell = -1;
         int rotation = -1;
-        int yLength = levelMap.GetLength(0);
-        int xLength = levelMap.GetLength(1);
 
         for (int y = 0; y < yLength; ++y) 
         {
             for(int x = 0; x < xLength; ++x)
             {
                 int cell = levelMap[y, x];
+                Vector3 worldPos = new Vector3(x - xLength + 1, -y + yLength - 1, 0);
 
                 if (x > 0)
                     leftCell = levelMap[y, x-1];
@@ -93,7 +145,7 @@ public class LevelGenerator : MonoBehaviour
                             rotation = 180;
                         if ((topCell == 1 || topCell == 2) && (rightCell == 1 || rightCell == 2)) 
                             rotation = 90;
-                        GameObject spawnOC = SpawnPiece(outCorner, new Vector3(x, -y, 0), rotation);
+                        GameObject spawnOC = SpawnPiece(outCorner, worldPos, rotation);
                         break;
 
                     case 2: // Outside wall
@@ -102,7 +154,7 @@ public class LevelGenerator : MonoBehaviour
                         // if ((rightCell == 1 || rightCell == 2 || rightCell == 7) && (leftCell == 1 || leftCell == 2 || leftCell == 7))
                         else
                             rotation = 0;
-                        GameObject spawnOW = SpawnPiece(outWall, new Vector3(x, -y, 0), rotation);
+                        GameObject spawnOW = SpawnPiece(outWall, worldPos, rotation);
                         break;
 
                     case 3: // Inside corner
@@ -114,7 +166,7 @@ public class LevelGenerator : MonoBehaviour
                             rotation = 180;
                         if (Connectible(rightCell) && Connectible(topCell)) 
                             rotation = 90;
-                        GameObject spawnIC = SpawnPiece(inCorner, new Vector3(x, -y, 0), rotation);
+                        GameObject spawnIC = SpawnPiece(inCorner, worldPos, rotation);
                         break;
 
                     case 4: // Inside wall
@@ -122,27 +174,27 @@ public class LevelGenerator : MonoBehaviour
                             rotation = 0;
                         else
                             rotation = 90;
-                        GameObject spawnIW = SpawnPiece(inWall, new Vector3(x, -y, 0), rotation);
+                        GameObject spawnIW = SpawnPiece(inWall, worldPos, rotation);
                         break;
 
                     case 5: // Standard pellet
                         rotation = 0;
-                        GameObject spawnSP = SpawnPiece(pellet, new Vector3(x, -y, 0), rotation);
+                        GameObject spawnSP = SpawnPiece(pellet, worldPos, rotation);
                         break;
 
                     case 6: // Power pellet
                         rotation = 0;
-                        GameObject spawnPP = SpawnPiece(powerPellet, new Vector3(x, -y, 0), rotation);
+                        GameObject spawnPP = SpawnPiece(powerPellet, worldPos, rotation);
                         break;
 
                     case 7: // T Junction
                         rotation = 0;
-                        GameObject spawnTJ = SpawnPiece(tJunction, new Vector3(x, -y, 0), rotation);
+                        GameObject spawnTJ = SpawnPiece(tJunction, worldPos, rotation);
                         break;
 
                     case 8: // Ghost exit wall
                         rotation = 0;
-                        GameObject spawnGE = SpawnPiece(ghostExit, new Vector3(x, -y, 0), rotation);
+                        GameObject spawnGE = SpawnPiece(ghostExit, worldPos, rotation);
                         break;
                 }
             }

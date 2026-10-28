@@ -10,6 +10,12 @@ public class AudioPlayer : MonoBehaviour
     public AudioClip startMusic;
     public AudioClip normalMusic;
     public AudioClip pacMove;
+    public AudioClip pacPellet;
+    public AudioClip pacPower;
+
+    public bool isMoving = false;
+    public bool isPellet = false;
+    public bool isPower = false;
 
     IEnumerator Start()
     {
@@ -24,10 +30,18 @@ public class AudioPlayer : MonoBehaviour
 
     public IEnumerator PlayMove() 
     {
-        for(;;) 
+        if (isMoving)
         {
-            audioSource.PlayOneShot(pacMove);
-            yield return new WaitForSeconds(pacMove.length + 0.2f);
+            for(;;) 
+            {
+                if (isPellet)
+                    audioSource.PlayOneShot(pacPellet);
+                else if (isPower)
+                    audioSource.PlayOneShot(pacPower);
+                else if (isMoving)
+                    audioSource.PlayOneShot(pacMove);
+                yield return new WaitForSeconds(pacMove.length + 0.2f);
+            }
         }
     }
 }

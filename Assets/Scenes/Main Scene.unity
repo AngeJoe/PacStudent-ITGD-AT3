@@ -14461,7 +14461,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 12.958333
+  orthographic size: 15.527778
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -14505,7 +14505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.PixelPerfectCamera
   m_ComponentVersion: 1
-  m_AssetsPPU: 24
+  m_AssetsPPU: 18
   m_RefResolutionX: 750
   m_RefResolutionY: 700
   m_CropFrame: 0
@@ -38806,6 +38806,11 @@ MonoBehaviour:
   startMusic: {fileID: 8300000, guid: cb9ee8986ed2cd845b3e185494e83eb4, type: 3}
   normalMusic: {fileID: 8300000, guid: 74192783138c68f479953f87a4c9092d, type: 3}
   pacMove: {fileID: 8300000, guid: 6820cdc2791e8a84aa485b2abb078245, type: 3}
+  pacPellet: {fileID: 8300000, guid: 066c269236cdf4247996966f6ec32ffe, type: 3}
+  pacPower: {fileID: 8300000, guid: 0a09294b61f503a4397cf2f40860f132, type: 3}
+  isMoving: 0
+  isPellet: 0
+  isPower: 0
 --- !u!82 &1316144779
 AudioSource:
   m_ObjectHideFlags: 0
@@ -46957,7 +46962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5492741258170026425, guid: 5c8fd63ccc30471429e06b0764bfe6a5, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7959320637099807893, guid: 5c8fd63ccc30471429e06b0764bfe6a5, type: 3}
       propertyPath: m_Controller
@@ -46996,6 +47001,8 @@ MonoBehaviour:
   animator: {fileID: 1566043696}
   tweener: {fileID: 1710678832}
   playerSpeed: 0.25
+  audioplayer: {fileID: 1316144778}
+  levelGenerator: {fileID: 1734087146}
 --- !u!1 &1568205449
 GameObject:
   m_ObjectHideFlags: 0
@@ -52208,7 +52215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1734087146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64111,6 +64118,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2617385986237722818, guid: 3912dd720bdcba044aea85da2381fd51, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8556778547916846926, guid: 3912dd720bdcba044aea85da2381fd51, type: 3}
       propertyPath: m_Name
       value: Purple Angel
@@ -64293,6 +64304,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2856845692490141561, guid: a659e06bb87148e42a1ad3dad7962e9d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8451167885114870005, guid: a659e06bb87148e42a1ad3dad7962e9d, type: 3}
       propertyPath: m_Name
       value: Red Angel
@@ -64353,6 +64368,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1004703542350840695, guid: 586f12ecb457a6c4b8d4ad4831b21017, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5976712579533073566, guid: 586f12ecb457a6c4b8d4ad4831b21017, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0699999
@@ -64413,6 +64432,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 720654824931149837, guid: 6fbdce3bb5eea1242819ee86e7aa14fb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6125079515870406628, guid: 6fbdce3bb5eea1242819ee86e7aa14fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.9300001
