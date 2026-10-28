@@ -74,11 +74,11 @@ public class LevelGenerator : MonoBehaviour
 
     public int getTile(int x, int y)
     {
-        Debug.Log(x + ", " + y + " before");
+        // Debug.Log(x + ", " + y + " before");
         int[] mapPos = realToMap(new Vector3(x, y));
         x = mapPos[0];
         y = mapPos[1];
-        Debug.Log(x + ", " + y + " after");
+        // Debug.Log(x + ", " + y + " after");
 
         if (x >= xLength) x = 2 * xLength - x - 1;
         if (y >= yLength) y = 2 * yLength - y - 2;

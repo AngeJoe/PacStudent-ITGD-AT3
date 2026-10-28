@@ -6,8 +6,9 @@ public class PacStudentController : MonoBehaviour
     public Tweener tweener;
     private Vector3 currentPos;
     public float playerSpeed = 0.25f;
-    public AudioPlayer audioplayer;
+    public AudioPlayer audioPlayer;
     public LevelGenerator levelGenerator;
+    public ParticleSystem particles;
 
     string lastInput;
     string currentInput;
@@ -24,8 +25,11 @@ public class PacStudentController : MonoBehaviour
 
     void Update()
     {
-        // animator.speed = 1f;
         currentPos = transform.position;
+        
+        animator.speed = 1f;
+        var emission = particles.emission;
+        emission.enabled = false;
 
         if (Input.GetKey(KeyCode.W))
             lastInput = "W";
@@ -42,6 +46,25 @@ public class PacStudentController : MonoBehaviour
         // Movement based on Last Input
         if (!tweener.TweenExists(transform))
         {
+            if (levelGenerator.isNormalPellet(currentPos))
+            {
+                audioPlayer.isMoving = false;
+                audioPlayer.isPellet = true;
+                audioPlayer.isPower = false;
+            }
+            else if (levelGenerator.isPowerPellet(currentPos))
+            {
+                audioPlayer.isMoving = false;
+                audioPlayer.isPellet = false;
+                audioPlayer.isPower = true;
+            }
+            else if (levelGenerator.isEmpty(currentPos))
+            {
+                audioPlayer.isMoving = true;
+                audioPlayer.isPellet = false;
+                audioPlayer.isPower = false;
+            }
+            
             Vector3 lastDir = canMove(lastInput);
             Vector3 currentDir = canMove(currentInput);
 
@@ -50,14 +73,15 @@ public class PacStudentController : MonoBehaviour
                 tweener.AddTween(transform, currentPos, lastDir, playerSpeed);
                 setAnimation(lastInput);
                 currentInput = lastInput;
+                emission.enabled = true;
+                
             }
-
             else if (currentDir != Vector3.zero)
             {
                 tweener.AddTween(transform, currentPos, currentDir, playerSpeed);
                 setAnimation(currentInput);
+                emission.enabled = true;
             }
-
             // else if (lastInput == "D")
             // {
             //     Vector3 endPos = rightVector(currentPos);
@@ -73,10 +97,12 @@ public class PacStudentController : MonoBehaviour
         // No Movement/Lerp
         else 
         {
-            // Stop movement sound
+            animator.speed = 0f;
+            emission.enabled = true;
 
-            // Stop animation
-            // animator.speed = 0f;
+            // audioPlayer.isMoving = true;
+            // audioPlayer.isPellet = false;
+            // audioPlayer.isPower = false;
         }
     }
 
