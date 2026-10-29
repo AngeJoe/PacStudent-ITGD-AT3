@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CherryController : MonoBehaviour
 {
+    public LevelGenerator levelGenerator;
     public GameObject cherry;
 
     public GameObject curCherry = null;
@@ -17,7 +18,16 @@ public class CherryController : MonoBehaviour
     void Update()
     {
         if (Time.time - lastDestroyed > 5 && curCherry == null)
+        {
             curCherry = Instantiate(cherry);
+            curCherry.SetActive(false);
+
+            Cherry cherryScript = curCherry.GetComponent<Cherry>();
+            cherryScript.levelGenerator = levelGenerator;
+            cherryScript.cherryController = this;
+
+            curCherry.SetActive(true);
+        }
     }
 
     public void destroyCherry()

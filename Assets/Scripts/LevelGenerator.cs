@@ -30,10 +30,6 @@ public class LevelGenerator : MonoBehaviour
             {2,2,2,2,2,1,5,3,3,0,4,0,0,0},
             {0,0,0,0,0,0,5,0,0,0,4,0,0,0},
         };
-    
-    int xLength;
-    int yLength;
-
     // LEGEND:
     // 0 - Empty (Can either be a background sprite or no sprite).
     // 1 - Outside corner (double lined corner piece in original game).
@@ -44,6 +40,19 @@ public class LevelGenerator : MonoBehaviour
     // 6 - An empty space with a Power pellet (see Visual Assets above).
     // 7 - A t junction piece for connecting with adjoining regions.
     // 8 - Ghost exit wall (pink line in original game).
+
+    int xLength;
+    int yLength;
+    public int realXLength => levelMap.GetLength(1) * 2;
+    public int realYLength => levelMap.GetLength(0) * 2 - 1;
+    
+    public static LevelGenerator Inst { get; private set; }
+
+    void Awake()
+    {
+        if (Inst == null) Inst = this;
+        else Destroy(gameObject);
+    }
 
     void Start()
     {
@@ -61,7 +70,14 @@ public class LevelGenerator : MonoBehaviour
 
     }
 
-    public int[] realToMap(Vector3 vec)
+    public Vector3 MapToWorldPos(int x, int y)
+    {
+        x -= xLength - 1;
+        y = yLength - y - 1;
+        return new Vector3(x, y);
+    }
+
+    public int[] WorldToMapPos(Vector3 vec)
     {
         int x = (int)Mathf.Round(vec.x);
         int y = (int)Mathf.Round(vec.y);
@@ -75,7 +91,7 @@ public class LevelGenerator : MonoBehaviour
     public int getTile(int x, int y)
     {
         // Debug.Log(x + ", " + y + " before");
-        int[] mapPos = realToMap(new Vector3(x, y));
+        int[] mapPos = WorldToMapPos(new Vector3(x, y));
         x = mapPos[0];
         y = mapPos[1];
         // Debug.Log(x + ", " + y + " after");

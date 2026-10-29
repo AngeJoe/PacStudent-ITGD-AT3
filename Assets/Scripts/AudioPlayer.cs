@@ -7,6 +7,8 @@ public class AudioPlayer : MonoBehaviour
 {
     public static AudioPlayer inst;
     public AudioSource audioSource;
+    public AudioSource playerAudio;
+
     public AudioClip startMusic;
     public AudioClip normalMusic;
     public AudioClip pacMove;
@@ -21,6 +23,7 @@ public class AudioPlayer : MonoBehaviour
     {
         inst = this;
         StartCoroutine(PlayMove());
+
         audioSource.Play();
         yield return new WaitForSeconds(3);
         audioSource.clip = normalMusic;
@@ -30,16 +33,16 @@ public class AudioPlayer : MonoBehaviour
 
     public IEnumerator PlayMove() 
     {
-        if (isMoving)
+        if (isMoving)  
         {
-            for(;;) 
+            for(;;)
             {
                 if (isPellet)
-                    audioSource.PlayOneShot(pacPellet);
+                    playerAudio.PlayOneShot(pacPellet);
                 else if (isPower)
-                    audioSource.PlayOneShot(pacPower);
+                    playerAudio.PlayOneShot(pacPower);
                 else if (isMoving)
-                    audioSource.PlayOneShot(pacMove);
+                    playerAudio.PlayOneShot(pacMove);
                 yield return new WaitForSeconds(pacMove.length + 0.2f);
             }
         }
