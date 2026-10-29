@@ -9,6 +9,7 @@ public class PacStudentController : MonoBehaviour
     public AudioPlayer audioPlayer;
     public LevelGenerator levelGenerator;
     public ParticleSystem particles;
+    public CherryController cherryController;
 
     string lastInput;
     string currentInput;
@@ -62,12 +63,34 @@ public class PacStudentController : MonoBehaviour
                 playMoveSound(currentNext);
             }
         }
-
-        else 
+        else
         {
             emission.enabled = true;
             animator.speed = 1f;
         }
+    }
+
+    // void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     Debug.Log(other.tag);
+    //     if (other.tag == "Cherry")
+    //     {
+    //         // GameManager.instance.AddScore(100);
+
+    //         // audioPlayer.PlaySound(audioPlayer.cherrySound);
+
+    //         cherryController.destroyCherry();
+    //     }
+    // }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Trigger detected: " + other.name);
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        Debug.Log("Inside trigger: " + other.name);
     }
 
     void playMoveSound(Vector3 nextPos)
@@ -114,7 +137,7 @@ public class PacStudentController : MonoBehaviour
         return Vector3.zero;
     }
 
-    void setAnimation(string input) 
+    void setAnimation(string input)
     {
         if (input == "W") animator.SetInteger("direction", 1);
         if (input == "A") animator.SetInteger("direction", -2);

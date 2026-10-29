@@ -52,13 +52,13 @@ public class LevelGenerator : MonoBehaviour
     {
         if (Inst == null) Inst = this;
         else Destroy(gameObject);
+
+        xLength = levelMap.GetLength(1);
+        yLength = levelMap.GetLength(0);
     }
 
     void Start()
     {
-        xLength = levelMap.GetLength(1);
-        yLength = levelMap.GetLength(0);
-        
         Destroy(level01);
         createLevel();
         MirrorHori();
@@ -95,6 +95,9 @@ public class LevelGenerator : MonoBehaviour
         x = mapPos[0];
         y = mapPos[1];
         // Debug.Log(x + ", " + y + " after");
+
+        if (x < 0 || x >= realXLength || y < 0 || y >= realYLength)
+            return -1;
 
         if (x >= xLength) x = 2 * xLength - x - 1;
         if (y >= yLength) y = 2 * yLength - y - 2;
