@@ -33,18 +33,16 @@ public class AudioPlayer : MonoBehaviour
 
     public IEnumerator PlayMove() 
     {
-        if (isMoving)  
+        for(;;) 
         {
-            for(;;)
-            {
-                if (isPellet)
-                    playerAudio.PlayOneShot(pacPellet);
-                else if (isPower)
-                    playerAudio.PlayOneShot(pacPower);
-                else if (isMoving)
-                    playerAudio.PlayOneShot(pacMove);
-                yield return new WaitForSeconds(pacMove.length + 0.2f);
-            }
+            if (isPellet)
+                audioSource.PlayOneShot(pacPellet);
+            else if (isPower)
+                audioSource.PlayOneShot(pacPower);
+            else if (isMoving)
+                audioSource.PlayOneShot(pacMove);
+            yield return new WaitForSeconds(pacMove.length + 0.2f);
         }
+
     }
 }

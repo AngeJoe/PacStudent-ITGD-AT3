@@ -30,6 +30,9 @@ public class PacStudentController : MonoBehaviour
         animator.speed = 1f;
         var emission = particles.emission;
         emission.enabled = false;
+        audioPlayer.isMoving = false;
+            audioPlayer.isPellet = false;
+            audioPlayer.isPower = false;
 
         if (Input.GetKey(KeyCode.W)) lastInput = "W";
         if (Input.GetKey(KeyCode.A)) lastInput = "A";
@@ -92,8 +95,9 @@ public class PacStudentController : MonoBehaviour
         {
             // animator.speed = 0f;
             emission.enabled = true;
-
-            // audioPlayer.isMoving = false;
+            audioPlayer.isMoving = false;
+            audioPlayer.isPellet = false;
+            audioPlayer.isPower = false;
         }
     }
 
