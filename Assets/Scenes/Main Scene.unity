@@ -15907,6 +15907,7 @@ GameObject:
   - component: {fileID: 601153992}
   - component: {fileID: 601153991}
   - component: {fileID: 601153993}
+  - component: {fileID: 601153994}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -15956,6 +15957,18 @@ MonoBehaviour:
   levelGenerator: {fileID: 1734087146}
   cherry: {fileID: 2832103083307187954, guid: 050e61e438d2da2428b226366644b731, type: 3}
   curCherry: {fileID: 0}
+--- !u!114 &601153994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601153990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 423621505130c074183aead82a048b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
 --- !u!1 &602823477
 GameObject:
   m_ObjectHideFlags: 0
@@ -64443,6 +64456,18 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6319582195556159321, guid: 3912dd720bdcba044aea85da2381fd51, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1566043699}
+    - target: {fileID: 6319582195556159321, guid: 3912dd720bdcba044aea85da2381fd51, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 601153994}
+    - target: {fileID: 6319582195556159321, guid: 3912dd720bdcba044aea85da2381fd51, type: 3}
+      propertyPath: levelGenerator
+      value: 
+      objectReference: {fileID: 1734087146}
     - target: {fileID: 8556778547916846926, guid: 3912dd720bdcba044aea85da2381fd51, type: 3}
       propertyPath: m_Name
       value: Purple Angel
@@ -64625,6 +64650,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2838118002972260948, guid: a659e06bb87148e42a1ad3dad7962e9d, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1566043699}
+    - target: {fileID: 2838118002972260948, guid: a659e06bb87148e42a1ad3dad7962e9d, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 601153994}
+    - target: {fileID: 2838118002972260948, guid: a659e06bb87148e42a1ad3dad7962e9d, type: 3}
+      propertyPath: levelGenerator
+      value: 
+      objectReference: {fileID: 1734087146}
     - target: {fileID: 2856845692490141561, guid: a659e06bb87148e42a1ad3dad7962e9d, type: 3}
       propertyPath: m_SortingOrder
       value: 5
@@ -64689,6 +64726,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2685979023385844177, guid: 586f12ecb457a6c4b8d4ad4831b21017, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1566043699}
+    - target: {fileID: -2685979023385844177, guid: 586f12ecb457a6c4b8d4ad4831b21017, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 601153994}
+    - target: {fileID: -2685979023385844177, guid: 586f12ecb457a6c4b8d4ad4831b21017, type: 3}
+      propertyPath: levelGenerator
+      value: 
+      objectReference: {fileID: 1734087146}
     - target: {fileID: 1004703542350840695, guid: 586f12ecb457a6c4b8d4ad4831b21017, type: 3}
       propertyPath: m_SortingOrder
       value: 5
@@ -64753,6 +64802,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4317616883219921042, guid: 6fbdce3bb5eea1242819ee86e7aa14fb, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1566043699}
+    - target: {fileID: -4317616883219921042, guid: 6fbdce3bb5eea1242819ee86e7aa14fb, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 601153994}
+    - target: {fileID: -4317616883219921042, guid: 6fbdce3bb5eea1242819ee86e7aa14fb, type: 3}
+      propertyPath: levelGenerator
+      value: 
+      objectReference: {fileID: 1734087146}
     - target: {fileID: 720654824931149837, guid: 6fbdce3bb5eea1242819ee86e7aa14fb, type: 3}
       propertyPath: m_SortingOrder
       value: 5
