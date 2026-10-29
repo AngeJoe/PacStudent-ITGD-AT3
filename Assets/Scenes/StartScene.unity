@@ -390,7 +390,18 @@ MonoBehaviour:
   audioSource: {fileID: 328598161}
   startMusic: {fileID: 8300000, guid: cb9ee8986ed2cd845b3e185494e83eb4, type: 3}
   normalMusic: {fileID: 8300000, guid: 74192783138c68f479953f87a4c9092d, type: 3}
+  scaredMusic: {fileID: 0}
+  deadMusic: {fileID: 0}
   pacMove: {fileID: 8300000, guid: 6820cdc2791e8a84aa485b2abb078245, type: 3}
+  pacPellet: {fileID: 0}
+  pacPower: {fileID: 0}
+  cherrySound: {fileID: 0}
+  ghostEatSound: {fileID: 0}
+  wallSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  isMoving: 0
+  isPellet: 0
+  isPower: 0
 --- !u!82 &328598161
 AudioSource:
   m_ObjectHideFlags: 0
@@ -614,8 +625,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 90, y: -100}
-  m_SizeDelta: {x: 133.29, y: 71.312}
+  m_AnchoredPosition: {x: 103.92257, y: -124.23201}
+  m_SizeDelta: {x: 153.9087, y: 119.776}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &455522199
 MonoBehaviour:
@@ -2183,8 +2194,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -90, y: -100}
-  m_SizeDelta: {x: 133.29999, y: 71.312}
+  m_AnchoredPosition: {x: -103.9218, y: -124.23201}
+  m_SizeDelta: {x: 153.9203, y: 119.776}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1029432733
 MonoBehaviour:
@@ -3815,6 +3826,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06df39ebb2a4fe241b149de0b1639a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  highscoreText: {fileID: 742510918}
+  level2Text: {fileID: 1262807793}
 --- !u!4 &1667604753
 Transform:
   m_ObjectHideFlags: 0
