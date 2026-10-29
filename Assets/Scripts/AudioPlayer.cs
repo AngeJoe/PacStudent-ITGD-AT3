@@ -85,4 +85,14 @@ public class AudioPlayer : MonoBehaviour
     {
         PlayMusic(deadMusic);
     }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
+    
+    public void StopMusic()
+    {
+        audioSource.Stop();
+    }
 }

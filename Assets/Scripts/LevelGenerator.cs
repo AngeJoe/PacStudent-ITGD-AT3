@@ -43,6 +43,8 @@ public class LevelGenerator : MonoBehaviour
 
     int xLength;
     int yLength;
+    bool[,] eatenPellets;
+    public int pelletCount;
     public int realXLength => levelMap.GetLength(1) * 2;
     public int realYLength => levelMap.GetLength(0) * 2 - 1;
     
@@ -50,11 +52,11 @@ public class LevelGenerator : MonoBehaviour
 
     void Awake()
     {
-        if (Inst == null) Inst = this;
-        else Destroy(gameObject);
+        Inst = this;
 
         xLength = levelMap.GetLength(1);
         yLength = levelMap.GetLength(0);
+        eatenPellets = new bool[realXLength, realYLength];
     }
 
     void Start()
@@ -117,14 +119,26 @@ public class LevelGenerator : MonoBehaviour
 
     public bool isNormalPellet(Vector3 endPos)
     {
-        int tile = getTile(endPos.x, endPos.y);
-        return tile == 5;
+        int[] pos = WorldToMapPos(endPos);
+        if (pos[0] < 0 || pos[0] >= realXLength || pos[1] < 0 || pos[1] >= realYLength)
+            return false;
+
+        return getTile(endPos.x, endPos.y) == 5 && !eatenPellets[pos[0], pos[1]];
     }
 
     public bool isPowerPellet(Vector3 endPos)
     {
-        int tile = getTile(endPos.x, endPos.y);
-        return tile == 6;
+        int[] pos = WorldToMapPos(endPos);
+        if (pos[0] < 0 || pos[0] >= realXLength || pos[1] < 0 || pos[1] >= realYLength)
+            return false;
+
+        return getTile(endPos.x, endPos.y) == 6 && !eatenPellets[pos[0], pos[1]];
+    }
+
+    public void pelletGone(Vector3 position)
+    {
+        int[] pos = WorldToMapPos(position);
+        eatenPellets[pos[0], pos[1]] = true;
     }
 
     public void createLevel() 
@@ -231,6 +245,18 @@ public class LevelGenerator : MonoBehaviour
         obj.transform.SetParent(transform);
         obj.transform.localPosition = position;
         obj.transform.rotation = Quaternion.Euler(0, 0, rotation);
+
+        if (prefab == pellet || prefab.CompareTag("Pellet"))
+        {
+            obj.tag = "Pellet";
+            pelletCount++;
+        }
+        else if (prefab == powerPellet || prefab.CompareTag("PowerPellet"))
+        {
+            obj.tag = "PowerPellet";
+            pelletCount++;
+        }
+
         return obj;
     }
 
