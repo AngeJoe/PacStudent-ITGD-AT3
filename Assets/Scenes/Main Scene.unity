@@ -19302,7 +19302,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 14.805555
+  orthographic size: 14.777778
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -20781,7 +20781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CherryController
   levelGenerator: {fileID: 1734087146}
-  cherry: {fileID: 5151890947655735972, guid: 9cb2461066891cf42bba73521f0dee0a, type: 3}
+  cherry: {fileID: 2832103083307187954, guid: 050e61e438d2da2428b226366644b731, type: 3}
   curCherry: {fileID: 0}
 --- !u!114 &601153994
 MonoBehaviour:

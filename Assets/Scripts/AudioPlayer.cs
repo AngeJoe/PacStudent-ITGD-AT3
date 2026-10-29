@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VectorGraphics;
 
 public class AudioPlayer : MonoBehaviour
 {
@@ -22,7 +21,6 @@ public class AudioPlayer : MonoBehaviour
     IEnumerator Start()
     {
         inst = this;
-        StartCoroutine(PlayMove());
 
         audioSource.Play();
         yield return new WaitForSeconds(3);
@@ -31,18 +29,13 @@ public class AudioPlayer : MonoBehaviour
         audioSource.Play();
     }
 
-    public IEnumerator PlayMove() 
+    public void PlayMove() 
     {
-        for(;;) 
-        {
-            if (isPellet)
-                audioSource.PlayOneShot(pacPellet);
-            else if (isPower)
-                audioSource.PlayOneShot(pacPower);
-            else if (isMoving)
-                audioSource.PlayOneShot(pacMove);
-            yield return new WaitForSeconds(pacMove.length + 0.2f);
-        }
-
+        if (isPellet)
+            audioSource.PlayOneShot(pacPellet);
+        else if (isPower)
+            audioSource.PlayOneShot(pacPower);
+        else if (isMoving)
+            audioSource.PlayOneShot(pacMove);
     }
 }

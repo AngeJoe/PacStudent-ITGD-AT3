@@ -20,19 +20,19 @@ public class PacStudentController : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
         currentPos = transform.position;
-        
+
         animator.speed = 1f;
         var emission = particles.emission;
         emission.enabled = false;
         audioPlayer.isMoving = false;
-            audioPlayer.isPellet = false;
-            audioPlayer.isPower = false;
+        audioPlayer.isPellet = false;
+        audioPlayer.isPower = false;
 
         if (Input.GetKey(KeyCode.W)) lastInput = "W";
         if (Input.GetKey(KeyCode.A)) lastInput = "A";
@@ -42,52 +42,26 @@ public class PacStudentController : MonoBehaviour
         // Movement based on Last Input
         if (!tweener.TweenExists(transform))
         {
-            if (levelGenerator.isNormalPellet(currentPos))
-            {
-                audioPlayer.isMoving = true;
-                audioPlayer.isPellet = true;
-                audioPlayer.isPower = false;
-            }
-            else if (levelGenerator.isPowerPellet(currentPos))
-            {
-                audioPlayer.isMoving = true;
-                audioPlayer.isPellet = false;
-                audioPlayer.isPower = true;
-            }
-            else if (levelGenerator.isEmpty(currentPos))
-            {
-                audioPlayer.isMoving = true;
-                audioPlayer.isPellet = false;
-                audioPlayer.isPower = false;
-            }
-            
-            Vector3 lastDir = canMove(lastInput);
-            Vector3 currentDir = canMove(currentInput);
+            Vector3 lastNext = canMove(lastInput);
+            Vector3 currentNext = canMove(currentInput);
 
-            if (lastDir != Vector3.zero)
+            if (lastNext != Vector3.zero)
             {
-                tweener.AddTween(transform, currentPos, lastDir, playerSpeed);
+                tweener.AddTween(transform, currentPos, lastNext, playerSpeed);
                 setAnimation(lastInput);
                 currentInput = lastInput;
                 emission.enabled = true;
-                
+
+                playMoveSound(lastNext);
             }
-            else if (currentDir != Vector3.zero)
+            else if (currentNext != Vector3.zero)
             {
-                tweener.AddTween(transform, currentPos, currentDir, playerSpeed);
+                tweener.AddTween(transform, currentPos, currentNext, playerSpeed);
                 setAnimation(currentInput);
                 emission.enabled = true;
+
+                playMoveSound(currentNext);
             }
-            // else if (lastInput == "D")
-            // {
-            //     Vector3 endPos = rightVector(currentPos);
-            //     if (levelGenerator.isEmpty(endPos))
-            //     {
-            //         tweener.AddTween(transform, currentPos, endPos, playerSpeed);
-            //         animator.SetInteger("direction", 2);
-            //         currentInput = lastInput;
-            //     }
-            // }
         }
 
         // No Movement/Lerp
@@ -95,10 +69,31 @@ public class PacStudentController : MonoBehaviour
         {
             // animator.speed = 0f;
             emission.enabled = true;
-            audioPlayer.isMoving = false;
+        }
+    }
+
+    void playMoveSound(Vector3 nextPos)
+    {
+        if (levelGenerator.isNormalPellet(nextPos))
+        {
+            audioPlayer.isMoving = true;
+            audioPlayer.isPellet = true;
+            audioPlayer.isPower = false;
+        }
+        else if (levelGenerator.isPowerPellet(nextPos))
+        {
+            audioPlayer.isMoving = true;
+            audioPlayer.isPellet = false;
+            audioPlayer.isPower = true;
+        }
+        else if (levelGenerator.isEmpty(nextPos))
+        {
+            audioPlayer.isMoving = true;
             audioPlayer.isPellet = false;
             audioPlayer.isPower = false;
         }
+
+        audioPlayer.PlayMove();
     }
 
     Vector3 canMove(string input)
@@ -114,9 +109,9 @@ public class PacStudentController : MonoBehaviour
             dir = downVector(pos);
         else if (input == "D")
             dir = rightVector(pos);
-        else    
+        else
             return Vector3.zero;
-        
+
         if (levelGenerator.isEmpty(dir)) return dir;
         return Vector3.zero;
     }
