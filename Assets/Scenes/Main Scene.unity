@@ -11711,8 +11711,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.14509805, g: 0.09411766, b: 0.29411766, a: 1}
-        key1: {r: 0.24313727, g: 0.16862746, b: 0.46274513, a: 1}
+        key0: {r: 0.32941177, g: 0.7725491, b: 0.6745098, a: 1}
+        key1: {r: 0.6509804, g: 0.94117653, b: 0.87843144, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -19302,7 +19302,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 14.777778
+  orthographic size: 18.972221
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -19348,7 +19348,7 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_AssetsPPU: 18
   m_RefResolutionX: 750
-  m_RefResolutionY: 700
+  m_RefResolutionY: 600
   m_CropFrame: 0
   m_GridSnapping: 0
   m_FilterMode: 0
@@ -20733,7 +20733,6 @@ GameObject:
   - component: {fileID: 601153992}
   - component: {fileID: 601153991}
   - component: {fileID: 601153993}
-  - component: {fileID: 601153994}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -20783,22 +20782,6 @@ MonoBehaviour:
   levelGenerator: {fileID: 1734087146}
   cherry: {fileID: 2832103083307187954, guid: 050e61e438d2da2428b226366644b731, type: 3}
   curCherry: {fileID: 0}
---- !u!114 &601153994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601153990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 840ac74d2cad3614d8d97dddbd7b19cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Cherry
-  levelGenerator: {fileID: 1734087146}
-  cherryController: {fileID: 601153993}
-  midMap: {x: 0, y: 0, z: 0}
-  speed: 5
 --- !u!1 &602823477
 GameObject:
   m_ObjectHideFlags: 0
@@ -43223,16 +43206,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &1303338833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2222308152980246069, guid: 5c8fd63ccc30471429e06b0764bfe6a5, type: 3}
-  m_PrefabInstance: {fileID: 1354106096}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1303338834 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7959320637099807893, guid: 5c8fd63ccc30471429e06b0764bfe6a5, type: 3}
-  m_PrefabInstance: {fileID: 1354106096}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1303338836 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1385635280350881360, guid: 5c8fd63ccc30471429e06b0764bfe6a5, type: 3}
@@ -56458,7 +56431,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1710678833}
   - component: {fileID: 1710678832}
-  - component: {fileID: 1710678831}
   m_Layer: 0
   m_Name: TweenController
   m_TagString: Untagged
@@ -56466,21 +56438,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1710678831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710678830}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d6e8f7c116b50b41a89d99140ea2214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  pac: {fileID: 1303338833}
-  animator: {fileID: 1303338834}
-  tweener: {fileID: 1710678832}
 --- !u!114 &1710678832
 MonoBehaviour:
   m_ObjectHideFlags: 0

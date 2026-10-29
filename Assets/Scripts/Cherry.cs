@@ -36,13 +36,13 @@ public class Cherry : MonoBehaviour
         else if (spawnSide == 2) // Right
         {
             y = Random.Range(0, yLength - 1);
-            transform.position = LevelGenerator.Inst.MapToWorldPos(xLength, y);
+            transform.position = LevelGenerator.Inst.MapToWorldPos(xLength * 2, y);
         }
 
         else if (spawnSide == 3) // Down
         {
             x = Random.Range(0, xLength - 1);
-            transform.position = LevelGenerator.Inst.MapToWorldPos(x, yLength);
+            transform.position = LevelGenerator.Inst.MapToWorldPos(x, yLength * 2);
         }
 
         Vector3 dir = (-transform.position).normalized;
@@ -69,6 +69,6 @@ public class Cherry : MonoBehaviour
         if (pos == null || pos.Length < 2) return true;
         int x = pos[0];
         int y = pos[1];
-        return x < -1 || y < -1 || x > xLength + 1 || y > yLength + 1;
+        return x < -20 || y < -5 || x > xLength + 20 || y > yLength + 5;
     }
 }

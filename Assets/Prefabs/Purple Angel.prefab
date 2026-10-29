@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Purple Angel
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 2ee06d682cd0e9a46ba60941cc46f260, type: 3}
+      propertyPath: m_TagString
+      value: Ghost
+      objectReference: {fileID: 0}
     - target: {fileID: 1160356261127867848, guid: 2ee06d682cd0e9a46ba60941cc46f260, type: 3}
       propertyPath: m_Controller
       value: 

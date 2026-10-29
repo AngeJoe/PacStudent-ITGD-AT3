@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soul Pellet
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 31523649383fcb942b0bdbb926f58c7f, type: 3}
+      propertyPath: m_TagString
+      value: Pellet
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 31523649383fcb942b0bdbb926f58c7f, type: 3}
       propertyPath: m_SortingOrder
       value: 1

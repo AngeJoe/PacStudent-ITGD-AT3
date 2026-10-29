@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Angel
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 570b95e77125d434ead3803c44abf089, type: 3}
+      propertyPath: m_TagString
+      value: Ghost
+      objectReference: {fileID: 0}
     - target: {fileID: 1160356261127867848, guid: 570b95e77125d434ead3803c44abf089, type: 3}
       propertyPath: m_Controller
       value: 

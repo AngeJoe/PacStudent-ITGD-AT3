@@ -27,19 +27,18 @@ public class PacStudentController : MonoBehaviour
     {
         currentPos = transform.position;
 
-        animator.speed = 1f;
         var emission = particles.emission;
         emission.enabled = false;
         audioPlayer.isMoving = false;
         audioPlayer.isPellet = false;
         audioPlayer.isPower = false;
+        animator.speed = 0f;
 
         if (Input.GetKey(KeyCode.W)) lastInput = "W";
         if (Input.GetKey(KeyCode.A)) lastInput = "A";
         if (Input.GetKey(KeyCode.S)) lastInput = "S";
         if (Input.GetKey(KeyCode.D)) lastInput = "D";
 
-        // Movement based on Last Input
         if (!tweener.TweenExists(transform))
         {
             Vector3 lastNext = canMove(lastInput);
@@ -64,11 +63,10 @@ public class PacStudentController : MonoBehaviour
             }
         }
 
-        // No Movement/Lerp
         else 
         {
-            // animator.speed = 0f;
             emission.enabled = true;
+            animator.speed = 1f;
         }
     }
 
