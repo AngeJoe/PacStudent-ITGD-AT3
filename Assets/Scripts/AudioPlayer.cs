@@ -1,35 +1,43 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class AudioPlayer : MonoBehaviour
 {
     public static AudioPlayer inst;
     public AudioSource audioSource;
-    public AudioSource playerAudio;
 
     public AudioClip startMusic;
     public AudioClip normalMusic;
+    public AudioClip scaredMusic;
+    public AudioClip deadMusic;
     public AudioClip pacMove;
     public AudioClip pacPellet;
     public AudioClip pacPower;
+    public AudioClip cherrySound;
+    public AudioClip ghostEatSound;
+    public AudioClip wallSound;
+    public AudioClip deathSound;
 
     public bool isMoving = false;
     public bool isPellet = false;
     public bool isPower = false;
 
-    IEnumerator Start()
+    void Awake()
     {
         inst = this;
-
-        audioSource.Play();
-        yield return new WaitForSeconds(3);
-        audioSource.clip = normalMusic;
-        audioSource.loop = true;
-        audioSource.Play();
     }
 
-    public void PlayMove() 
+    void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "StartScene")
+            PlayIntro();
+        else
+            audioSource.Stop();
+    }
+
+    public void PlayMove()
     {
         if (isPellet)
             audioSource.PlayOneShot(pacPellet);
@@ -37,5 +45,44 @@ public class AudioPlayer : MonoBehaviour
             audioSource.PlayOneShot(pacPower);
         else if (isMoving)
             audioSource.PlayOneShot(pacMove);
+    }
+
+    public void PlayStep(bool pellet, bool power)
+    {
+        isMoving = true;
+        isPellet = pellet;
+        isPower = power;
+        PlayMove();
+    }
+
+    void PlayMusic(AudioClip music)
+    {
+        if (audioSource == null || music == null) return;
+        if (audioSource.clip == music && audioSource.isPlaying) return;
+
+        audioSource.Stop();
+        audioSource.clip = music;
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+
+    public void PlayIntro()
+    {
+        PlayMusic(startMusic);
+    }
+
+    public void PlayNormal()
+    {
+        PlayMusic(normalMusic);
+    }
+
+    public void PlayScared()
+    {
+        PlayMusic(scaredMusic);
+    }
+
+    public void PlayDead()
+    {
+        PlayMusic(deadMusic);
     }
 }

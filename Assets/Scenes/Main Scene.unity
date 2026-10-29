@@ -14476,7 +14476,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 14.888889
+  orthographic size: 16.666666
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -38877,12 +38877,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioPlayer
   audioSource: {fileID: 1316144779}
-  playerAudio: {fileID: 1316144781}
   startMusic: {fileID: 8300000, guid: cb9ee8986ed2cd845b3e185494e83eb4, type: 3}
   normalMusic: {fileID: 8300000, guid: 74192783138c68f479953f87a4c9092d, type: 3}
+  scaredMusic: {fileID: 8300000, guid: be8079e1e4caf8b46b0094de1577c34f, type: 3}
+  deadMusic: {fileID: 8300000, guid: 8b184e66f226e6f498ca6edaa54c8ccb, type: 3}
   pacMove: {fileID: 8300000, guid: 6820cdc2791e8a84aa485b2abb078245, type: 3}
   pacPellet: {fileID: 8300000, guid: 066c269236cdf4247996966f6ec32ffe, type: 3}
   pacPower: {fileID: 8300000, guid: 0a09294b61f503a4397cf2f40860f132, type: 3}
+  cherrySound: {fileID: 8300000, guid: 0a09294b61f503a4397cf2f40860f132, type: 3}
+  ghostEatSound: {fileID: 8300000, guid: 7a9f492cebcbfe04991a1790d22c8423, type: 3}
+  wallSound: {fileID: 8300000, guid: b24a0265fb5778845be01d6c24fe7437, type: 3}
+  deathSound: {fileID: 8300000, guid: ef3ff9041a692da4c925b3df7308b6a3, type: 3}
   isMoving: 0
   isPellet: 0
   isPower: 0
@@ -39312,7 +39317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2, y: -4.9999695}
+  m_AnchoredPosition: {x: -2, y: -5}
   m_SizeDelta: {x: 82.7142, y: 82.7142}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &1326951194
