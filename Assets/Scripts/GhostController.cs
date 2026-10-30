@@ -265,7 +265,7 @@ public class GhostController : MonoBehaviour
         if (currentDirection == "S") dir = "Down";
 
         string animation = "Ghost" + state + dir + "_Clip";
-        Debug.Log(animation);
+        // Debug.Log(animation);
 
         animator.Play(animation);
     }

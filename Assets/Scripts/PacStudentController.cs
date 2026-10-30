@@ -115,6 +115,7 @@ public class PacStudentController : MonoBehaviour
             }
 
             GameManager.inst.PelletCollected();
+            levelGenerator.pelletGone(currentPos);
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("Cherry"))
