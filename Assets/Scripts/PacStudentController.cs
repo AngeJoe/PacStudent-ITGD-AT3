@@ -70,7 +70,7 @@ public class PacStudentController : MonoBehaviour
                 currentInput = lastInput;
                 setMoving(true);
                 wallBumped = false;
-                Instantiate(particles, currentPos, Quaternion.identity);
+                Instantiate(particles);
                 playMoveSound(lastNext);
             }
             else if (currentNext != Vector3.zero)
@@ -79,7 +79,7 @@ public class PacStudentController : MonoBehaviour
                 setAnimation(currentInput);
                 setMoving(true);
                 wallBumped = false;
-                Instantiate(particles, currentPos, Quaternion.identity);
+                Instantiate(particles);
                 playMoveSound(currentNext);
             }
             else if (lastInput != "" && !wallBumped)
@@ -131,7 +131,7 @@ public class PacStudentController : MonoBehaviour
         {
             GhostController ghost = other.GetComponent<GhostController>();
 
-            if (ghost.state == "Normal")
+            if (ghost.state == "")
             {
                 GameManager.inst.PlayerHit();
             }

@@ -19,4 +19,9 @@ public class MenuUIManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
     }
+
+    public void LoadSecondLevel()
+    {
+        SceneManager.LoadSceneAsync(2);
+    }
 }

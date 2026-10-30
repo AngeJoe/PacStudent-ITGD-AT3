@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
     public string GetGhostState()
     {
         if (scaredTime <= 0)
-            return "Normal";
+            return "";
         else if (scaredTime <= 3)
             return "Recovering";
         else
