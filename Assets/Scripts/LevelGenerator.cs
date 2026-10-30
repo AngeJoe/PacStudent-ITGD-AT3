@@ -48,7 +48,7 @@ public class LevelGenerator : MonoBehaviour
     public int realXLength => levelMap.GetLength(1) * 2;
     public int realYLength => levelMap.GetLength(0) * 2 - 1;
     
-    public static LevelGenerator Inst { get; private set; }
+    public static LevelGenerator Inst;
 
     void Awake()
     {
@@ -115,6 +115,17 @@ public class LevelGenerator : MonoBehaviour
     {
         int tile = getTile(endPos.x, endPos.y);
         return tile == 0 || tile == 5 || tile == 6;
+    }
+
+    public bool isGhostWalkable(Vector3 position)
+    {
+        int tile = getTile(position.x, position.y);
+        return tile == 0 || tile == 5 || tile == 6 || tile == 8;
+    }
+
+    public bool isTeleport(Vector3 position)
+    {
+        return Mathf.RoundToInt(position.y) == 0 && (position.x <= -13 || position.x >= 14);
     }
 
     public bool isNormalPellet(Vector3 endPos)
@@ -246,12 +257,12 @@ public class LevelGenerator : MonoBehaviour
         obj.transform.localPosition = position;
         obj.transform.rotation = Quaternion.Euler(0, 0, rotation);
 
-        if (prefab == pellet || prefab.CompareTag("Pellet"))
+        if (prefab == pellet || prefab.tag == "Pellet")
         {
             obj.tag = "Pellet";
             pelletCount++;
         }
-        else if (prefab == powerPellet || prefab.CompareTag("PowerPellet"))
+        else if (prefab == powerPellet || prefab.tag == "PowerPellet")
         {
             obj.tag = "PowerPellet";
             pelletCount++;

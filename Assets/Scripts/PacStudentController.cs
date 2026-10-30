@@ -70,7 +70,7 @@ public class PacStudentController : MonoBehaviour
                 currentInput = lastInput;
                 setMoving(true);
                 wallBumped = false;
-                Instantiate(particles);
+                Instantiate(particles, currentPos, Quaternion.identity);
                 playMoveSound(lastNext);
             }
             else if (currentNext != Vector3.zero)
@@ -79,7 +79,7 @@ public class PacStudentController : MonoBehaviour
                 setAnimation(currentInput);
                 setMoving(true);
                 wallBumped = false;
-                Instantiate(particles);
+                Instantiate(particles, currentPos, Quaternion.identity);
                 playMoveSound(currentNext);
             }
             else if (lastInput != "" && !wallBumped)
