@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4442267178645500338}
   - component: {fileID: 1566832358792288601}
   - component: {fileID: 1557706200289653161}
+  - component: {fileID: -5089172033583527455}
   m_Layer: 0
   m_Name: Movement Particle
   m_TagString: Untagged
@@ -4836,3 +4837,16 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &-5089172033583527455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362504780353886043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08b554234286547409eedba0638467d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeleteQuickly
+  delay: 1

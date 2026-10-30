@@ -11,6 +11,7 @@ public class PacStudentController : MonoBehaviour
     public LevelGenerator levelGenerator;
     public ParticleSystem particles;
     public ParticleSystem wallParticles;
+    public ParticleSystem deathParticles;
     public CherryController cherryController;
 
     bool wallBumped = false;
@@ -69,6 +70,7 @@ public class PacStudentController : MonoBehaviour
                 currentInput = lastInput;
                 setMoving(true);
                 wallBumped = false;
+                Instantiate(particles);
                 playMoveSound(lastNext);
             }
             else if (currentNext != Vector3.zero)
@@ -77,12 +79,13 @@ public class PacStudentController : MonoBehaviour
                 setAnimation(currentInput);
                 setMoving(true);
                 wallBumped = false;
+                Instantiate(particles);
                 playMoveSound(currentNext);
             }
             else if (lastInput != "" && !wallBumped)
             {
                 wallBumped = true;
-                wallParticles.Play();
+                Instantiate(wallParticles, currentPos + 0.5f * getMoveDir(lastInput), Quaternion.identity);
                 audioPlayer.audioSource.PlayOneShot(audioPlayer.wallSound);
             }
         }
@@ -197,6 +200,25 @@ public class PacStudentController : MonoBehaviour
 
         if (levelGenerator.isEmpty(dir)) return dir;
         return Vector3.zero;
+    }
+
+    Vector3 getMoveDir(string input)
+    {
+        Vector3 pos = Vector3.zero;
+        Vector3 dir;
+
+        if (input == "W")
+            dir = upVector(pos);
+        else if (input == "A")
+            dir = leftVector(pos);
+        else if (input == "S")
+            dir = downVector(pos);
+        else if (input == "D")
+            dir = rightVector(pos);
+        else
+            return Vector3.zero;
+        
+        return dir;
     }
 
     void setAnimation(string input)
